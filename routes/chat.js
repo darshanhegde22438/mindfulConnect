@@ -33,60 +33,68 @@ router.post("/chat", requireAuth, async (req, res) => {
     const userInput = req.body.userInput?.trim();
 
     if (!userInput) {
-        // Store empty input warning in DB
-        await Message.create({
-            content: "Please type a message before sending.",
+        return res.status(400).json({
+            error: "Please type a message before sending.",
             sender: "bot",
-            user: req.session.userId,
         });
-        return res.redirect("/chat");
     }
 
     try {
         // Save user message to DB
-        await Message.create({
+        const userMessage = await Message.create({
             content: userInput,
             sender: "user",
             user: req.session.userId,
         });
 
-        // Get chat history from DB and format for Gemini API
+        // Get chat history and format for Gemini API
         const dbHistory = await Message.find({ user: req.session.userId })
             .sort({ createdAt: -1 })
-            .limit(20); // Increased limit to provide more context
+            .limit(20);
 
-        // Transform messages to Gemini API format
         const geminiHistory = dbHistory
             .map((msg) => ({
                 role: msg.sender === "user" ? "user" : "model",
                 parts: [{ text: msg.content }],
             }))
-            .reverse(); // Reverse to get chronological order
+            .reverse();
 
         // Get Gemini response
-        const { responseText, newHistory } = await getGeminiResponse(
+        const { responseText } = await getGeminiResponse(
             userInput,
             geminiHistory
         );
 
         // Save bot response to DB
-        await Message.create({
+        const botMessage = await Message.create({
             content: responseText,
             sender: "bot",
             user: req.session.userId,
         });
+
+        // Return both messages as JSON
+        res.json({
+            success: true,
+            messages: [
+                {
+                    content: userMessage.content,
+                    sender: userMessage.sender,
+                    createdAt: userMessage.createdAt,
+                },
+                {
+                    content: botMessage.content,
+                    sender: botMessage.sender,
+                    createdAt: botMessage.createdAt,
+                },
+            ],
+        });
     } catch (error) {
         console.error("Error processing chat:", error);
-        // Save error message to DB
-        await Message.create({
-            content:
-                "I apologize, but I'm currently experiencing technical difficulties. Please try again later.",
+        res.status(500).json({
+            error: "I apologize, but I'm currently experiencing technical difficulties. Please try again later.",
             sender: "bot",
-            user: req.session.userId,
         });
     }
-
-    res.redirect("/chat");
 });
 
 // Add this to your chat.js controller
