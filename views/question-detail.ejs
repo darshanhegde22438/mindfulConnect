@@ -2,243 +2,143 @@
 
 <!-- Hero Section -->
 <section class="hero">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-10 text-center">
-        <h1 class="display-3">Question <span class="text-gradient">Details</span></h1>
-        <p class="subtitle mb-4">View and participate in the discussion</p>
-      </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h1 class="display-3">
+                    Question <span class="text-gradient">Details</span>
+                </h1>
+                <p class="subtitle mb-4">
+                    View and participate in the discussion
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- Question and Answers Section -->
 <section class="features py-6">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <!-- Question Card -->
-        <div class="community-card mb-4">
-          <div class="card-body">
-            <h3 class="question-title"><%= post.title %></h3>
-            <div class="d-flex align-items-center mb-3">
-              <small class="question-meta">Posted by <%= post.author.name %> • <%= new Date(post.createdAt).toLocaleDateString() %></small>
-            </div>
-            <p class="question-content mb-3"><%= post.content %></p>
-            <div class="d-flex gap-2 mb-3">
-              <% post.tags.forEach(tag => { %>
-                <span class="badge tag-badge"><%= tag %></span>
-              <% }); %>
-            </div>
-          </div>
-        </div>
-
-        <!-- Answers Section -->
-        <div class="community-card">
-          <div class="card-body">
-            <h3 class="answers-title">Answers (<%= answerCount %>)</h3>
-            
-            <% if (post.answers && post.answers.length > 0) { %>
-              <% post.answers.forEach(answer => { %>
-                <div class="answer-item <%= answer.isSolution ? 'solution-answer' : '' %>">
-                  <% if (answer.isSolution) { %>
-                    <div class="badge solution-badge">Accepted Solution</div>
-                  <% } %>
-                  <div class="d-flex align-items-center mb-3">
-                    <small class="answer-meta">Answered by <%= answer.author.name %> • <%= new Date(answer.createdAt).toLocaleDateString() %></small>
-                  </div>
-                  <p class="answer-content mb-3"><%= answer.content %></p>
-                  
-                  <% if (!answer.isSolution && post.author._id.toString() === user._id.toString()) { %>
-                    <form action="/community/answers/<%= answer._id %>/solution" method="POST" class="mt-3">
-                      <button type="submit" class="btn btn-outline-success btn-sm">
-                        Mark as Solution
-                      </button>
-                    </form>
-                  <% } %>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Question Card -->
+                <div class="community-card mb-4">
+                    <div class="card-body">
+                        <h3 class="question-title"><%= post.title %></h3>
+                        <div class="d-flex align-items-center mb-3">
+                            <small class="question-meta"
+                                >Posted by <%= post.author.name %> • <%= new
+                                Date(post.createdAt).toLocaleDateString()
+                                %></small
+                            >
+                        </div>
+                        <p class="question-content mb-3"><%= post.content %></p>
+                        <% if (post.tags && post.tags.length > 0) { %>
+                        <div class="d-flex gap-2 mb-3">
+                            <% post.tags.forEach(tag => { %>
+                            <span class="badge tag-badge"><%= tag %></span>
+                            <% }); %>
+                        </div>
+                        <% } %>
+                    </div>
                 </div>
-              <% }); %>
-            <% } else { %>
-              <div class="alert alert-info no-answers">
-                No answers yet. Be the first to help!
-              </div>
-            <% } %>
 
-            <!-- Answer Form -->
-            <% if (post.author._id.toString() !== user._id.toString()) { %>
-              <div class="mt-4 answer-form">
-                <h4 class="answer-form-title">Your Answer</h4>
-                <form action="/community/<%= post._id %>/answers" method="POST">
-                  <div class="mb-3">
-                    <textarea class="form-control answer-textarea" name="content" rows="4" required
-                              placeholder="Write your answer here..."></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Post Answer</button>
-                </form>
-              </div>
-            <% } else { %>
-              <div class="alert alert-info mt-4 cannot-answer">
-                You cannot answer your own question.
-              </div>
-            <% } %>
-          </div>
+                <!-- Answers Section -->
+                <div class="community-card">
+                    <div class="card-body">
+                        <h3 class="answers-title">
+                            Answers (<%= post.answers ? post.answers.length : 0
+                            %>)
+                        </h3>
+
+                        <% if (post.answers && post.answers.length > 0) { %> <%
+                        post.answers.forEach(answer => { %>
+                        <div
+                            class="answer-item <%= answer.isSolution ? 'solution-answer' : '' %>"
+                        >
+                            <% if (answer.isSolution) { %>
+                            <div class="badge solution-badge">
+                                Accepted Solution
+                            </div>
+                            <% } %>
+                            <div class="d-flex align-items-center mb-3">
+                                <small class="answer-meta"
+                                    >Answered by <%= answer.author.name %> • <%=
+                                    new
+                                    Date(answer.createdAt).toLocaleDateString()
+                                    %></small
+                                >
+                            </div>
+                            <p class="answer-content mb-3">
+                                <%= answer.content %>
+                            </p>
+
+                            <% if (!answer.isSolution && currentUser &&
+                            post.author._id.toString() ===
+                            currentUser._id.toString()) { %>
+                            <form
+                                action="/community/answers/<%= answer._id %>/solution"
+                                method="POST"
+                                class="mt-3"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-success btn-sm"
+                                >
+                                    Mark as Solution
+                                </button>
+                            </form>
+                            <% } %>
+                        </div>
+                        <% }); %> <% } else { %>
+                        <div class="alert alert-info no-answers">
+                            No answers yet. Be the first to help!
+                        </div>
+                        <% } %>
+
+                        <!-- Answer Form -->
+                        <% if (currentUser) { %> <% if
+                        (post.author._id.toString() !==
+                        currentUser._id.toString()) { %>
+                        <div class="mt-4 answer-form">
+                            <h4 class="answer-form-title">Your Answer</h4>
+                            <form
+                                action="/community/<%= post._id %>/answers"
+                                method="POST"
+                            >
+                                <div class="mb-3">
+                                    <textarea
+                                        class="form-control answer-textarea"
+                                        name="content"
+                                        rows="4"
+                                        required
+                                        placeholder="Write your answer here..."
+                                    ></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    Post Answer
+                                </button>
+                            </form>
+                        </div>
+                        <% } else { %>
+                        <div class="alert alert-info mt-4 cannot-answer">
+                            You cannot answer your own question.
+                        </div>
+                        <% } %> <% } else { %>
+                        <div class="alert alert-info mt-4">
+                            Please <a href="/login">log in</a> to post an
+                            answer.
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <%- include('partials/footer') %>
 
 <style>
-/* Base Styles */
-.community-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 1rem;
-  transition: all 0.3s ease;
-  margin-bottom: 2rem;
-}
-
-.community-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  border-color: var(--primary-color);
-}
-
-.community-card .card-body {
-  padding: 2rem;
-}
-
-/* Question Section */
-.question-title {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.question-meta {
-  color: var(--light-text);
-  opacity: 0.9;
-  font-size: 0.9rem;
-}
-
-.question-content {
-  color: var(--text-color);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.tag-badge {
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 500;
-  padding: 0.4em 0.8em;
-  border-radius: 0.5rem;
-}
-
-/* Answers Section */
-.answers-title {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-
-.answer-item {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.answer-item:hover {
-  border-color: var(--primary-color);
-}
-
-.solution-answer {
-  border: 2px solid var(--success-color);
-  background-color: rgba(40, 167, 69, 0.05);
-}
-
-.solution-badge {
-  background-color: var(--success-color);
-  color: white;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.answer-meta {
-  color: var(--light-text);
-  opacity: 0.8;
-  font-size: 0.85rem;
-}
-
-.answer-content {
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-.no-answers {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-}
-
-/* Answer Form */
-.answer-form-title {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.answer-textarea {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-}
-
-.answer-textarea:focus {
-  background-color: var(--card-bg);
-  color: var(--text-color);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(139, 92, 246, 0.25);
-}
-
-.cannot-answer {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-}
-
-/* Add these to your :root variables if not present */
-:root {
-  --success-color: #28a745;
-  --card-bg: #ffffff;
-  --border-color: #e1e1e1;
-  --text-color: #333333;
-  --light-text: #6c757d;
-  --primary-color: #8b5cf6;
-}
-
-[data-theme="dark"] {
-  --card-bg: #18181b;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --text-color: #f3f4f6;
-  --light-text: #9ca3af;
-  --primary-color: #8b5cf6;
-  --success-color: #34d399;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .community-card .card-body {
-    padding: 1.5rem;
-  }
-  
-  .answer-item {
-    padding: 1.25rem;
-  }
-}
+    /* [Keep all your existing CSS styles] */
 </style>
