@@ -1,0 +1,79 @@
+<%- include('partials/header-logged-in') %>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h1 class="display-3">Welcome to <span class="text-gradient">MindfulConnect</span></h1>
+        <p class="subtitle mb-4">Your personalized mental wellness journey</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="/chat" class="btn btn-primary btn-lg px-4">
+            <i class="fas fa-comments me-2"></i>Start Chat
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features py-6">
+  <div class="container">
+    <div class="section-heading mb-6 text-center">
+      <h2>Your Support Options</h2>
+      <p class="section-subtitle">Choose the support that best fits your needs</p>
+    </div>
+    <div class="row g-4">
+      <!-- Feature 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-robot fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">AI Chat Support</h3>
+            <p class="feature-text">Get immediate support and guidance through our AI-powered chat system, available 24/7.</p>
+            <a href="/chat" class="btn btn-primary mt-3">
+              <i class="fas fa-comments me-2"></i>Start Chat
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100" style="animation-delay: 0.2s;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-user-md fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">Professional Support</h3>
+            <p class="feature-text">Connect with qualified mental health professionals for personalized guidance and support.</p>
+            <a href="/therapist" class="btn btn-primary mt-3">
+              <i class="fas fa-user-md me-2"></i>Find Therapist
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100" style="animation-delay: 0.4s;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-users fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">Community Support</h3>
+            <p class="feature-text">Join a supportive community of individuals on similar mental health journeys.</p>
+            <a href="/community" class="btn btn-primary mt-3">
+              <i class="fas fa-users me-2"></i>Join Community
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %> 

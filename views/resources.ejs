@@ -1,0 +1,366 @@
+<%- include('partials/header-logged-in') %>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <h1 class="display-3">Mental Health <span class="text-gradient">Resources</span></h1>
+        <p class="subtitle mb-4">Tools, guides, and support to help you on your journey</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Tools Section -->
+<section class="features py-6">
+  <div class="container">
+    <div class="section-heading mb-6 text-center">
+      <h2>Quick Tools</h2>
+      <p class="section-subtitle">Immediate support and self-help resources</p>
+    </div>
+    <div class="row g-4">
+      <!-- Mood Tracker -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-chart-line fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">Mood Tracker</h3>
+            <p class="feature-text">Track your daily mood, sleep, and activities to identify patterns and triggers.</p>
+            <a href="/mood-tracker" class="btn btn-primary mt-3">
+              <i class="fas fa-plus me-2"></i>Start Tracking
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breathing Exercises -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100" style="animation-delay: 0.2s;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-wind fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">Breathing Exercises</h3>
+            <p class="feature-text">Guided breathing exercises to help manage anxiety and stress in the moment.</p>
+            <a href="/breathing" class="btn btn-primary mt-3">
+              <i class="fas fa-play me-2"></i>Start Exercise
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Resources -->
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card fade-in h-100" style="animation-delay: 0.4s;">
+          <div class="card-body p-4 text-center">
+            <div class="icon-wrapper mb-4 d-flex justify-content-center">
+              <i class="fas fa-phone-alt fa-2x text-gradient" aria-hidden="true"></i>
+            </div>
+            <h3 class="feature-title">Emergency Support</h3>
+            <p class="feature-text">Immediate access to crisis hotlines and emergency mental health services.</p>
+            <a href="/emergency" class="btn btn-primary mt-3">
+              <i class="fas fa-exclamation-circle me-2"></i>Get Help Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Educational Resources -->
+<section class="features py-6">
+  <div class="container">
+    <div class="section-heading mb-6 text-center">
+      <h2>Learn & Understand</h2>
+      <p class="section-subtitle">Educational resources to help you understand mental health</p>
+    </div>
+    <div class="row g-4">
+      <!-- Articles -->
+      <div class="col-md-6">
+        <div class="feature-card h-100">
+          <div class="card-body p-4">
+            <h3 class="h4 mb-4">
+              <i class="fas fa-book-open text-gradient me-2"></i>
+              Articles & Guides
+            </h3>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <a href="/articles/anxiety" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Understanding Anxiety: A Comprehensive Guide
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="/articles/depression" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Depression: Signs, Symptoms, and Coping Strategies
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="/articles/stress" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Managing Stress in Daily Life
+                </a>
+              </li>
+              <li>
+                <a href="/articles/mindfulness" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Introduction to Mindfulness Practice
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Videos -->
+      <div class="col-md-6">
+        <div class="feature-card h-100">
+          <div class="card-body p-4">
+            <h3 class="h4 mb-4">
+              <i class="fas fa-video text-gradient me-2"></i>
+              Video Resources
+            </h3>
+            <ul class="list-unstyled">
+              <li class="mb-3">
+                <a href="/videos/meditation" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Guided Meditation Sessions
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="/videos/therapy" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Understanding Therapy: What to Expect
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="/videos/coping" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Coping Skills Workshop
+                </a>
+              </li>
+              <li>
+                <a href="/videos/success" class="text-decoration-none">
+                  <i class="fas fa-chevron-right me-2 text-primary"></i>
+                  Recovery Success Stories
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Professional Resources -->
+<section class="features py-6">
+  <div class="container">
+    <div class="section-heading mb-6 text-center">
+      <h2>Professional Support</h2>
+      <p class="section-subtitle">Connect with qualified mental health professionals</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="feature-card h-100">
+          <div class="card-body p-4">
+            <h3 class="h4 mb-4">
+              <i class="fas fa-user-md text-gradient me-2"></i>
+              Find a Therapist
+            </h3>
+            <p class="mb-4">Connect with qualified mental health professionals in your area or online.</p>
+            <a href="/therapist" class="btn btn-primary">
+              <i class="fas fa-search me-2"></i>Search Therapists
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.tool-card {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--bs-dark);
+  color: var(--bs-light);
+  text-align: center;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.tool-card i {
+  color: var(--bs-primary);
+}
+
+.emergency-tool {
+  background-color: var(--bs-danger);
+  color: white;
+}
+
+.emergency-tool:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+.resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.resource-item {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--bs-dark);
+  transition: all 0.3s ease;
+}
+
+.resource-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.resource-item h3 {
+  color: var(--bs-primary);
+  margin-bottom: 0.5rem;
+}
+
+.resource-item p {
+  color: var(--bs-light);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+/* ====== Enhanced Button Styles ====== */
+/* Base Button */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* Button Types */
+.btn-primary {
+  background-color: #0d6efd; /* bs-primary */
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0b5ed7; /* bs-primary-dark */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #0d6efd; /* bs-primary */
+  border: 2px solid #0d6efd; /* bs-primary */
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background-color: rgba(13, 110, 253, 0.1); /* bs-primary with opacity */
+}
+
+/* Icon Styling */
+.btn i {
+  font-size: 1.1em;
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn:hover i {
+  transform: translateX(2px);
+}
+
+/* Dark Mode Adaptations */
+.dark-mode .btn-primary {
+  background-color: #0b5ed7; /* Slightly darker in dark mode */
+}
+
+.dark-mode .btn-secondary {
+  color: #6ea8fe; /* Lighter blue in dark mode */
+  border-color: #6ea8fe;
+}
+
+.dark-mode .btn-secondary:hover {
+  background-color: rgba(110, 168, 254, 0.2); /* Lighter hover in dark mode */
+}
+
+/* Focus State */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Disabled State */
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Special Emergency Button */
+.btn-emergency {
+  background-color: #dc3545; /* bs-danger */
+  animation: pulse 2s infinite;
+}
+
+.btn-emergency:hover {
+  background-color: #bb2d3b; /* bs-danger-dark */
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* Card Button Adjustments */
+.feature-card .btn {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+}
+</style> 
+<%- include('partials/footer') %>
